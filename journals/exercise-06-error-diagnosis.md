@@ -168,3 +168,133 @@ The root cause was the fixed loop boundary of five despite the array containing 
 The test also required correction because it expected five cards even though the supplied sample data contained three users.
 
 This demonstrates why debugging should examine both the implementation and the tests rather than assuming that a failing test automatically means the application code alone is wrong.
+
+# Part 2 — Task Manager Variable Scope Error
+
+## Problem
+
+The `addTask()` function was intended to add a new task to the application's global task list.
+
+However, the function declared another variable named `tasks`:
+
+```javascript
+let tasks = {
+  id: Date.now(),
+  name: taskName,
+  completed: false,
+};
+```
+
+This created a local variable that shadowed the global `tasks` array.
+
+---
+
+## Root Cause
+
+The application has a global task array:
+
+```javascript
+let tasks = [];
+```
+
+The `addTask()` function accidentally declared a local variable with the same name.
+
+As a result, the new task was stored in the local variable instead of being added to the global task array.
+
+The rest of the application continued using the global array.
+
+---
+
+## Execution Flow
+
+```text
+Global tasks array
+       ↓
+initApp()
+       ↓
+2 tasks stored globally
+       ↓
+addTask("New test task")
+       ↓
+local `tasks` variable created
+       ↓
+new task stored only in local variable
+       ↓
+displayTasks()
+       ↓
+displayTasks() uses global tasks array
+       ↓
+new task is missing
+```
+
+---
+
+## Test Failure
+
+The test expects the task list to contain three tasks after adding one task to the initial two.
+
+However, the original `addTask()` implementation returned a newly created task object rather than the complete task array.
+
+This meant the expected array behavior could not occur.
+
+---
+
+## Fix
+
+The local variable was renamed to `task` and the new task was explicitly added to the global array:
+
+```javascript
+function addTask(taskName) {
+  const task = {
+    id: Date.now(),
+    name: taskName,
+    completed: false,
+  };
+
+  tasks.push(task);
+
+  console.log("Task added:", task);
+  displayTasks();
+  return tasks;
+}
+```
+
+---
+
+## Why the Fix Works
+
+`task` represents the individual task being created.
+
+`tasks` continues to represent the application's global array.
+
+The new task is inserted into that array using:
+
+```javascript
+tasks.push(task);
+```
+
+Therefore the global state is updated and other functions such as `displayTasks()`, `toggleTaskStatus()`, and `deleteTask()` can work with the newly added task.
+
+---
+
+## AI-Assisted Debugging Reflection
+
+The AI analysis helped identify variable shadowing as the root cause.
+
+The important insight was that the problem was not simply the variable name itself.
+
+The deeper problem was that a local variable named `tasks` hid the global task array, preventing the new task from being stored in the application's shared state.
+
+The test was useful because it expressed the intended behavior: after initializing two tasks and adding one more, the task collection should contain three tasks.
+
+---
+
+## Key Learning
+
+This debugging exercise demonstrated the importance of understanding JavaScript variable scope.
+
+A local variable can shadow a variable from an outer scope.
+
+When this happens, code inside the function may operate on a different variable from the one used by the rest of the application.
+
+The fix requires both removing the accidental shadowing and explicitly updating the shared task collection.

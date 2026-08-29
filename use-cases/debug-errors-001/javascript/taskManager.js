@@ -7,7 +7,7 @@ function initApp() {
   console.log("Task Manager initialized");
   tasks = [
     { id: 1, name: "Complete project proposal", completed: false },
-    { id: 2, name: "Meeting with team", completed: true }
+    { id: 2, name: "Meeting with team", completed: true },
   ];
   displayTasks();
   return tasks; // Return for testing
@@ -15,24 +15,31 @@ function initApp() {
 
 // Function to add a new task
 function addTask(taskName) {
-  let tasks = { id: Date.now(), name: taskName, completed: false };  // Notice the 'let tasks' here!
-  console.log("Task added:", tasks);
+  const task = {
+    id: Date.now(),
+    name: taskName,
+    completed: false,
+  };
+
+  tasks.push(task);
+
+  console.log("Task added:", task);
   displayTasks();
-  return tasks; // Return for testing
+  return tasks;
 }
 
 // Function to display all tasks
 function displayTasks() {
   // Check if we're in a browser environment
-  if (typeof document !== 'undefined') {
-    const taskListElement = document.getElementById('task-list');
+  if (typeof document !== "undefined") {
+    const taskListElement = document.getElementById("task-list");
     if (taskListElement) {
       taskListElement.innerHTML = "";
 
-      tasks.forEach(task => {
-        const taskElement = document.createElement('div');
+      tasks.forEach((task) => {
+        const taskElement = document.createElement("div");
         taskElement.innerHTML = `
-          <div class="task-item ${task.completed ? 'completed' : ''}">
+          <div class="task-item ${task.completed ? "completed" : ""}">
             <span>${task.name}</span>
             <button onclick="toggleTaskStatus(${task.id})">Toggle</button>
             <button onclick="deleteTask(${task.id})">Delete</button>
@@ -42,7 +49,7 @@ function displayTasks() {
       });
     }
   } else {
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       console.log(task.name);
     });
   }
@@ -51,7 +58,7 @@ function displayTasks() {
 
 // Toggle task status
 function toggleTaskStatus(taskId) {
-  tasks = tasks.map(task => {
+  tasks = tasks.map((task) => {
     if (task.id === taskId) {
       return { ...task, completed: !task.completed };
     }
@@ -63,7 +70,7 @@ function toggleTaskStatus(taskId) {
 
 // Delete a task
 function deleteTask(taskId) {
-  tasks = tasks.filter(task => task.id !== taskId);
+  tasks = tasks.filter((task) => task.id !== taskId);
   displayTasks();
   return tasks; // Return for testing
 }
@@ -80,12 +87,12 @@ function resetTasks() {
 }
 
 // Initialize the app when page loads (only in browser environment)
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   window.onload = initApp;
 }
 
 // Export functions for testing
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     initApp,
     addTask,
@@ -93,6 +100,6 @@ if (typeof module !== 'undefined' && module.exports) {
     toggleTaskStatus,
     deleteTask,
     getAllTasks,
-    resetTasks
+    resetTasks,
   };
 }
