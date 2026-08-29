@@ -484,3 +484,65 @@ I learned to:
 7. verify my understanding using AI rather than simply accepting an explanation.
 
 The AI prompts were most useful when they were combined with manual tracing and concrete examples.
+
+## Verification Against the Repository Tests
+
+I examined the actual `task_priority.test.js` file in the JavaScript Task Manager.
+
+The tests confirm the intended behavior of the algorithm.
+
+### Priority
+
+The tests verify that task scores increase according to priority:
+
+```text
+LOW < MEDIUM < HIGH < URGENT
+```
+
+### Due Dates
+
+The tests verify that tasks with earlier due dates receive higher scores:
+
+```text
+OVERDUE > TODAY > TOMORROW > NEXT WEEK > NEXT MONTH
+```
+
+### Status
+
+The tests verify that completed and review tasks receive lower scores:
+
+```text
+DONE < REVIEW < TODO
+```
+
+The review score is also lower than the score for an in-progress task.
+
+### Tags
+
+The tests verify that the following tags increase a task's score:
+
+- `critical`
+- `blocker`
+- `urgent`
+
+### Sorting
+
+The tests verify that `sortTasksByImportance()` orders tasks according to their calculated scores.
+
+The tests also verify that sorting does not modify the original task array.
+
+### Top Priority Tasks
+
+The tests verify that `getTopPriorityTasks()`:
+
+1. returns the requested number of highest-scoring tasks;
+2. uses a default limit of 5;
+3. returns all available tasks when the requested limit is greater than the number of tasks.
+
+### Repository-Level Understanding
+
+Examining the tests helped validate my understanding of the algorithm.
+
+The implementation is a weighted scoring system, while the tests describe the expected relationships between the different scoring factors.
+
+The tests therefore provide executable evidence of how the algorithm is expected to behave.
