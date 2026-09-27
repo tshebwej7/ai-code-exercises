@@ -1,20 +1,63 @@
-# ai-code-exercises
+# AI Code Exercises
 
-Code Exercises for AI Course for Software Engineers.
+A collection of practical software development exercises from my **Generative AI for Software Development** learning journey at **WeThinkCode_**.
 
-This is still a work in progress - the idea is to capture the various exercise starter code examples in here.
+The repository focuses on applying Generative AI to real software-development workflows rather than treating AI as a simple code generator.
+
+## What This Repository Covers
+
+The exercises explore how AI can support developers with:
+
+- Code comprehension
+- Algorithm deconstruction
+- Finding where to start in an unfamiliar codebase
+- Code documentation
+- README documentation
+- Debugging and error diagnosis
+- Performance optimization
+- AI solution verification
+- Software testing
+- Refactoring and function decomposition
 
 ## Exercises
 
- Use Case | Exercise | Instructions | Starter Code |
-| --- | --- | --- | --- |
-| Code Comprehension | Code Explore Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-comprehension-001/) | [Starter Code](use-cases/code-comprehension-001/README.md) |
-| Code Comprehension | Algorithm Deconstruction Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-algorithms/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Code Comprehension | Knowing Where to Start | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-comprehension-002/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Documenting Code | Code Documentation | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-doc-code/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Documenting Code |README documentation | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-doc-readme/) | [Starter Code](use-cases/code-algorithms/README.md) |
-| Debugging | Error Diagnosis Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-debug-errors-001/) | [Starter Code](use-cases/debug-errors-001/README.md) |
-| Debugging | Performance Optimization Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-code-performance/) | [Starter Code](use-cases/debug-performance/README.md) |
-| Debugging | AI Solution Verification Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-debug-limitations/) | [Starter Code](use-cases/debug-limitations/README.md) |
-| Testing | Using AI to help with testing | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-testing-001/) | [Starter Code](use-cases/testing-001) |
-| Refactoring | Function Decomposition Challenge | [Instructions](https://ai.wethinkco.de/ai-software/ai-use-cases/exercises/exercise-refactor-functions/) | [Starter Code](use-cases/refactor-functions) |
+| Use Case | Exercise |
+| --- | --- |
+| Code Comprehension | Code Explore Challenge |
+| Code Comprehension | Algorithm Deconstruction Challenge |
+| Code Comprehension | Knowing Where to Start |
+| Documenting Code | Code Documentation |
+| Documenting Code | README Documentation |
+| Debugging | Error Diagnosis Challenge |
+| Debugging | Performance Optimization Challenge |
+| Debugging | AI Solution Verification Challenge |
+| Testing | Using AI to Help With Testing |
+| Refactoring | Function Decomposition Challenge |
+
+Exercise instructions and starter material are organized inside the repository under the relevant `use-cases/` directories.
+
+## Skills Demonstrated
+
+- AI-assisted code analysis
+- Prompting for software-development tasks
+- Debugging with AI assistance
+- Documentation generation and improvement
+- Test planning and verification
+- Refactoring analysis
+- Performance analysis
+- Critical evaluation of AI-generated solutions
+- Developer productivity workflows
+
+## Learning Context
+
+This repository forms part of my practical work in **Generative AI for Software Development** through **WeThinkCode_**.
+
+The goal is not simply to generate code with AI, but to understand how to use AI effectively while maintaining developer responsibility for correctness, security, maintainability, testing, and final verification.
+
+## Author
+
+**Jires Tshebwe**
+
+Junior Web Developer | Building Toward Full-Stack Development
+
+GitHub: https://github.com/tshebwej7
